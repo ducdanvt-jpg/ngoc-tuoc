@@ -2,7 +2,8 @@
 (function () {
   "use strict";
 
-  var ZALO_PHONE = "0778166166"; // Số Zalo nhận đặt bàn
+  var HOTLINE = "0778166166";          // Hotline nhận đặt bàn qua tin nhắn (SMS)
+  var HOTLINE_DISPLAY = "0778 166 166"; // dạng hiển thị cho người dùng
 
   // Mobile nav toggle
   var toggle = document.querySelector(".nav-toggle");
@@ -66,28 +67,29 @@
       var note = (d.get("note") || "").toString().trim();
 
       var text = [
-        "🍽️ ĐẶT BÀN — NHÀ HÀNG NGỌC TƯỚC",
-        "• Họ tên: " + name,
-        "• Điện thoại: " + phone,
-        "• Ngày: " + date + "  |  Giờ: " + time,
-        "• Số khách: " + guests,
-        note ? ("• Ghi chú: " + note) : ""
+        "ĐẶT BÀN - NHÀ HÀNG NGỌC TƯỚC",
+        "- Họ tên: " + name,
+        "- Điện thoại: " + phone,
+        "- Ngày: " + date + " | Giờ: " + time,
+        "- Số khách: " + guests,
+        note ? ("- Ghi chú: " + note) : ""
       ].filter(Boolean).join("\n");
 
-      var zaloUrl = "https://zalo.me/" + ZALO_PHONE;
+      // Mở sẵn ứng dụng nhắn tin với nội dung đặt bàn gửi tới hotline.
+      var smsUrl = "sms:" + HOTLINE + "?body=" + encodeURIComponent(text);
       var msg = document.getElementById("form-msg");
 
       copyText(text).then(function () {
         if (msg) {
           msg.style.display = "block";
           msg.innerHTML =
-            "✅ Cảm ơn <b>" + (name || "quý khách") + "</b>! Thông tin đặt bàn đã được <b>sao chép</b>. " +
-            "Cửa sổ <b>Zalo</b> của nhà hàng đang mở — bạn chỉ cần <b>dán (Ctrl/⌘ + V)</b> và gửi để xác nhận.<br>" +
-            "Nếu Zalo không tự mở: <a href=\"" + zaloUrl + "\" target=\"_blank\" rel=\"noopener\" style=\"color:#2f6b32;font-weight:700;text-decoration:underline\">bấm vào đây</a> " +
-            "hoặc gọi <a href=\"tel:" + ZALO_PHONE + "\" style=\"color:#2f6b32;font-weight:700\">" + ZALO_PHONE + "</a>.";
+            "✅ Cảm ơn <b>" + (name || "quý khách") + "</b>! Ứng dụng nhắn tin đang mở sẵn " +
+            "<b>tin nhắn đặt bàn</b> gửi tới hotline <b>" + HOTLINE_DISPLAY + "</b> — bạn chỉ cần bấm <b>Gửi</b>.<br>" +
+            "Nếu không tự mở (ví dụ trên máy tính): nội dung đã được <b>sao chép</b> — hãy nhắn tin " +
+            "hoặc gọi <a href=\"tel:" + HOTLINE + "\" style=\"color:#2f6b32;font-weight:700\">" + HOTLINE_DISPLAY + "</a>.";
         }
-        // Open Zalo chat in a new tab so the customer can paste & send.
-        window.open(zaloUrl, "_blank", "noopener");
+        // Điều hướng tới sms: — trên điện thoại sẽ mở app tin nhắn với nội dung điền sẵn.
+        window.location.href = smsUrl;
       });
     });
   }
