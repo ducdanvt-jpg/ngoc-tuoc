@@ -1,0 +1,11 @@
+# Claude Code local settings (per-máy, chứa quyền cục bộ)
+.claude/settings.local.json
+
+# Dependencies
+node_modules/
+
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
