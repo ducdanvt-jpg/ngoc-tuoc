@@ -176,6 +176,48 @@ h1,h2{text-wrap:balance}
 .menu-card p{color:var(--nacre-dim);font-size:.9rem;margin:0}
 .menu-card .en{color:var(--jade);font-family:var(--serif);font-style:italic;font-size:.9rem}
 
+/* ---------- VIP rooms gallery ---------- */
+.room-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.room-card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.28);
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}
+.room-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(75,165,140,.45)}
+.room-photo{position:relative;display:block;aspect-ratio:4/3;overflow:hidden}
+.room-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.room-card:hover .room-photo img{transform:scale(1.06)}
+.room-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(6,26,29,.86),rgba(6,26,29,.15) 42%,transparent 60%)}
+.room-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px 18px}
+.room-cap small{display:block;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--gold-light);margin-bottom:4px}
+.room-cap b{font-family:var(--serif);font-weight:500;font-size:1.4rem;color:var(--nacre);line-height:1.1}
+.room-photo:focus-visible{outline:2px solid var(--gold-light);outline-offset:-3px}
+.room-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:12px}
+.room-meta{display:flex;flex-wrap:wrap;gap:8px}
+.room-meta span{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;
+  color:var(--gold-light);background:rgba(75,165,140,.1);border:1px solid var(--line);
+  border-radius:40px;padding:5px 12px}
+.room-meta svg{width:14px;height:14px;color:var(--jade)}
+.room-body p{margin:0;color:var(--nacre-dim);font-size:.92rem;line-height:1.66}
+
+/* ---------- Lightbox ---------- */
+.lightbox{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+  padding:5vh 5vw;background:rgba(5,22,25,.9);backdrop-filter:blur(8px)}
+.lightbox.open{display:flex}
+.lightbox figure{margin:0;max-width:92vw;display:flex;flex-direction:column;align-items:center;gap:20px}
+.lightbox.open figure{animation:lb-in .28s cubic-bezier(.2,.7,.2,1)}
+.lightbox img{width:min(74vh,86vw);height:min(74vh,86vw);object-fit:cover;border-radius:50%;
+  border:2px solid var(--gold-light);background:var(--abyss-3);
+  box-shadow:0 0 0 10px rgba(226,197,131,.07),0 0 0 11px var(--line),0 30px 80px rgba(0,0,0,.55)}
+.lightbox figcaption{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--gold-light)}
+.lightbox-close{position:absolute;top:22px;right:26px;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(6,26,29,.7);color:var(--nacre);cursor:pointer;
+  display:grid;place-items:center;transition:background .2s,color .2s,border-color .2s}
+.lightbox-close svg{width:20px;height:20px}
+.lightbox-close:hover{background:var(--gold-light);color:var(--abyss);border-color:var(--gold-light)}
+@keyframes lb-in{from{transform:scale(.94);opacity:0}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.lightbox.open figure{animation:none}}
+
 /* ---------- Dish list (signature, numbered flow) ---------- */
 .dish-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 48px;margin-top:8px;counter-reset:dish}
 .dish{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;

@@ -94,6 +94,48 @@
     });
   }
 
+  // Lightbox cho ảnh phòng VIP: phóng to trong khung bo góc, không mở ảnh gốc hết cỡ.
+  var roomLinks = document.querySelectorAll(".room-photo");
+  if (roomLinks.length) {
+    var lb = document.createElement("div");
+    lb.className = "lightbox";
+    lb.setAttribute("role", "dialog");
+    lb.setAttribute("aria-modal", "true");
+    lb.innerHTML =
+      '<button class="lightbox-close" type="button" aria-label="Đóng">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+      '</button><figure><img alt=""><figcaption></figcaption></figure>';
+    document.body.appendChild(lb);
+    var lbImg = lb.querySelector("img");
+    var lbCap = lb.querySelector("figcaption");
+
+    function openLb(src, name) {
+      lbImg.src = src; lbImg.alt = name || "";
+      lbCap.textContent = name || "";
+      lb.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLb() {
+      lb.classList.remove("open");
+      document.body.style.overflow = "";
+      lbImg.src = "";
+    }
+
+    roomLinks.forEach(function (a) {
+      a.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        var nameEl = a.querySelector(".room-cap b");
+        openLb(a.getAttribute("href"), nameEl ? nameEl.textContent : "");
+      });
+    });
+    lb.addEventListener("click", function (ev) {
+      if (ev.target === lb || ev.target.closest(".lightbox-close")) closeLb();
+    });
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && lb.classList.contains("open")) closeLb();
+    });
+  }
+
   // Footer year
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
