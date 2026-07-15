@@ -216,7 +216,20 @@ h1,h2{text-wrap:balance}
 .lightbox-close svg{width:20px;height:20px}
 .lightbox-close:hover{background:var(--gold-light);color:var(--abyss);border-color:var(--gold-light)}
 @keyframes lb-in{from{transform:scale(.94);opacity:0}to{transform:none;opacity:1}}
-@media(prefers-reduced-motion:reduce){.lightbox.open figure{animation:none}}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(6,26,29,.72);color:var(--nacre);cursor:pointer;
+  display:grid;place-items:center;transition:background .2s,color .2s,border-color .2s;z-index:2}
+.lightbox-nav svg{width:24px;height:24px}
+.lightbox-nav:hover{background:var(--gold-light);color:var(--abyss);border-color:var(--gold-light)}
+.lightbox-prev{left:26px}
+.lightbox-next{right:26px}
+.lightbox img.swap{animation:lb-swap .26s ease}
+@keyframes lb-swap{from{opacity:.25}to{opacity:1}}
+@media(max-width:640px){
+  .lightbox-nav{width:44px;height:44px}
+  .lightbox-prev{left:10px}.lightbox-next{right:10px}
+}
+@media(prefers-reduced-motion:reduce){.lightbox.open figure,.lightbox img.swap{animation:none}}
 
 /* ---------- Dish list (signature, numbered flow) ---------- */
 .dish-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 48px;margin-top:8px;counter-reset:dish}

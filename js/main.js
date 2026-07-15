@@ -94,24 +94,39 @@
     });
   }
 
-  // Lightbox cho ảnh phòng VIP: phóng to trong khung bo góc, không mở ảnh gốc hết cỡ.
+  // Lightbox thư viện cho ảnh phòng VIP: khung tròn + nút qua/lại giữa các phòng.
   var roomLinks = document.querySelectorAll(".room-photo");
   if (roomLinks.length) {
+    var rooms = Array.prototype.map.call(roomLinks, function (a) {
+      var nameEl = a.querySelector(".room-cap b");
+      return { src: a.getAttribute("href"), name: nameEl ? nameEl.textContent : "" };
+    });
+    var idx = 0;
+
     var lb = document.createElement("div");
     lb.className = "lightbox";
     lb.setAttribute("role", "dialog");
     lb.setAttribute("aria-modal", "true");
     lb.innerHTML =
       '<button class="lightbox-close" type="button" aria-label="Đóng">' +
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
-      '</button><figure><img alt=""><figcaption></figcaption></figure>';
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+      '<button class="lightbox-nav lightbox-prev" type="button" aria-label="Phòng trước">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>' +
+      '<figure><img alt=""><figcaption></figcaption></figure>' +
+      '<button class="lightbox-nav lightbox-next" type="button" aria-label="Phòng sau">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>';
     document.body.appendChild(lb);
     var lbImg = lb.querySelector("img");
     var lbCap = lb.querySelector("figcaption");
 
-    function openLb(src, name) {
-      lbImg.src = src; lbImg.alt = name || "";
-      lbCap.textContent = name || "";
+    function render() {
+      var r = rooms[idx];
+      lbImg.src = r.src; lbImg.alt = r.name;
+      lbCap.textContent = r.name;
+      lbImg.classList.remove("swap"); void lbImg.offsetWidth; lbImg.classList.add("swap");
+    }
+    function openLb(i) {
+      idx = i; render();
       lb.classList.add("open");
       document.body.style.overflow = "hidden";
     }
@@ -120,19 +135,27 @@
       document.body.style.overflow = "";
       lbImg.src = "";
     }
+    function go(step) {
+      idx = (idx + step + rooms.length) % rooms.length;
+      render();
+    }
 
-    roomLinks.forEach(function (a) {
+    roomLinks.forEach(function (a, i) {
       a.addEventListener("click", function (ev) {
         ev.preventDefault();
-        var nameEl = a.querySelector(".room-cap b");
-        openLb(a.getAttribute("href"), nameEl ? nameEl.textContent : "");
+        openLb(i);
       });
     });
     lb.addEventListener("click", function (ev) {
-      if (ev.target === lb || ev.target.closest(".lightbox-close")) closeLb();
+      if (ev.target === lb || ev.target.closest(".lightbox-close")) { closeLb(); return; }
+      if (ev.target.closest(".lightbox-prev")) go(-1);
+      else if (ev.target.closest(".lightbox-next")) go(1);
     });
     document.addEventListener("keydown", function (ev) {
-      if (ev.key === "Escape" && lb.classList.contains("open")) closeLb();
+      if (!lb.classList.contains("open")) return;
+      if (ev.key === "Escape") closeLb();
+      else if (ev.key === "ArrowLeft") go(-1);
+      else if (ev.key === "ArrowRight") go(1);
     });
   }
 
