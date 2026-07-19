@@ -94,11 +94,11 @@
     });
   }
 
-  // Lightbox thư viện cho ảnh phòng VIP: khung tròn + nút qua/lại giữa các phòng.
-  var roomLinks = document.querySelectorAll(".room-photo");
+  // Lightbox thư viện cho ảnh phòng VIP và ảnh món ăn: khung tròn + nút qua/lại.
+  var roomLinks = document.querySelectorAll(".room-photo, .dish-tile");
   if (roomLinks.length) {
     var rooms = Array.prototype.map.call(roomLinks, function (a) {
-      var nameEl = a.querySelector(".room-cap b");
+      var nameEl = a.querySelector(".room-cap b") || a.querySelector("b");
       return { src: a.getAttribute("href"), name: nameEl ? nameEl.textContent : "" };
     });
     var idx = 0;
