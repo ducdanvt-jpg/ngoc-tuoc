@@ -245,11 +245,13 @@ table.acc th{color:var(--gold-dk);font-weight:800;font-size:10.5px;text-transfor
 table.acc code{font-size:12.5px;color:var(--ink)}
 .printgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 @media(max-width:600px){.printgrid{grid-template-columns:1fr}}
-.print-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 14px;text-align:center;box-shadow:var(--shadow-s);position:relative}
+.print-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 14px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:var(--shadow-s);position:relative}
 .print-card::before{content:"";position:absolute;inset:6px;border-radius:11px;border:1px solid var(--line-2);pointer-events:none}
-.print-card .plotus{height:30px;opacity:.95;margin-bottom:6px}
-.print-card canvas{width:152px;height:152px;background:#fff;padding:9px;border-radius:11px;image-rendering:pixelated}
-.print-card .pn{font-family:var(--serif);font-weight:600;font-size:15px;margin-top:9px}
+.print-card>*{position:relative;max-width:100%}
+.print-card .plotus{height:34px;width:auto;opacity:.95;display:block;margin:0 auto 12px}
+.print-card canvas{display:block;width:150px;height:150px;background:#fff;padding:9px;border-radius:11px;image-rendering:pixelated;margin:0 auto}
+.print-card .pn{font-family:var(--serif);font-weight:600;font-size:15px;margin-top:12px}
 .print-card .pc{font-size:11.5px;color:var(--muted);margin-top:5px}
 .print-card .pc code{background:var(--gold-soft);padding:1px 6px;border-radius:5px;color:var(--gold-dk);font-weight:700}
 .print-card .pscan{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dk);font-weight:700;margin-top:8px}
