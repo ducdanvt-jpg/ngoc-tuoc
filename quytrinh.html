@@ -2086,7 +2086,7 @@ var NT = (function(){
     ["overview","Tổng quan"],["day","Một ngày làm việc"],["phrases","Câu nói chuẩn"],
     ["rules","Nên & Cấm"],["process","Quy trình chi tiết"],["checklist","Checklist"],
     ["kpi","KPI đánh giá"],["exc","Xử lý tình huống"],["road","Lộ trình 7 ngày"],
-    ["card","Thẻ tóm tắt"],["common","Tiêu chuẩn 5 Sao"]
+    ["card","Thẻ tóm tắt"]
   ];
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
   function dept(id){return D.departments.find(function(x){return x.id===id})}
@@ -2143,6 +2143,12 @@ var NT = (function(){
     var h=heroHtml()+secH("Quy tắc Vàng của bạn");
     h+='<div class="card"><div class="card-b">'+cur.golden.map(function(g){
       return '<div class="golden"><span class="i">◆</span><div>'+esc(g)+'</div></div>';}).join("")+'</div></div>';
+    var c=D.common;
+    h+=secH(c.title+" — áp dụng chung cho mọi vị trí");
+    h+='<div class="card"><div class="card-b"><div style="font-size:13.8px;color:var(--muted);margin-bottom:4px">'+esc(c.intro)+'</div>';
+    c.blocks.forEach(function(b){h+='<div class="cblk"><h4 class="serif">'+esc(b.h)+'</h4><ul>'+
+      b.items.map(function(it){return '<li>'+esc(it)+'</li>';}).join("")+'</ul></div>';});
+    h+='</div></div>';
     h+=secH("Xem nhanh");
     var q=[["day","Một ngày làm việc","Nhật trình đầu–trong–cuối ca"],["card","Thẻ tóm tắt","Mang theo trong ca"],
       ["checklist","Checklist ca","Tự chấm, có tiến độ"],["road","Lộ trình 7 ngày","Mục tiêu từng ngày"]];
