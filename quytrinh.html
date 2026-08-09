@@ -323,59 +323,76 @@ table.acc code{font-size:12.5px;color:var(--ink)}
 
 <!-- ============ ADMIN ============ -->
 <section id="admin" class="hidden">
-  <div class="adm-h"><div class="wrap">
+  <div class="adm-h noprint"><div class="wrap">
     <div class="dept-ic">⚙️</div>
     <div><div class="eyebrow" style="color:var(--gold-lt)">Nhà hàng Ngọc Tước</div>
       <h2 class="serif">Quản trị · Tạo mã QR đăng nhập</h2></div>
     <div class="spacer" style="flex:1"></div>
     <button class="iconbtn noprint" onclick="NT.logout()">Đăng xuất</button>
   </div></div>
+  <div class="wrap noprint"><div class="tabs-scroll" id="admTabs" style="padding:12px 0">
+    <div class="tab active" data-at="main" onclick="NT.admTab('main')">⚙️ Trang chính</div>
+    <div class="tab" data-at="qr" onclick="NT.admTab('qr')">🖨️ Thẻ QR để in</div>
+    <div class="tab" data-at="acc" onclick="NT.admTab('acc')">🔑 Danh sách tài khoản</div>
+  </div></div>
   <div class="wrap" style="padding-bottom:20px">
-    <div class="card noprint" style="margin-top:16px"><div class="card-b">
-      <div class="field" style="margin-bottom:10px">
-        <label>Đường dẫn (URL) nơi bạn đăng tải app này — để mã QR mở đúng trang</label>
-        <input id="baseUrl" type="text" value="https://ngoctuoc.com/quytrinh.html" placeholder="vd: https://ngoctuoc.com/quytrinh.html" oninput="NT.renderAdmin()">
-      </div>
-      <div style="font-size:12.5px;color:var(--muted)">Để trống nếu chỉ dùng nội bộ (QR dùng đường dẫn hiện tại của trang). Nhân viên quét QR → vào thẳng bộ phận của mình.</div>
-    </div></div>
 
-    <div class="adm-grid">
-      <div class="card"><div class="card-b">
-        <div class="field"><label>Chọn bộ phận để tạo mã</label>
-          <select id="admDept" onchange="NT.renderAdmin()"></select></div>
-        <div class="qrframe" style="margin-top:12px">
-          <img class="lotus" data-logo="ngoctuoc" alt="Ngọc Tước">
-          <div><canvas id="admQr" width="224" height="224"></canvas></div>
+    <!-- ===== PANEL: TRANG CHÍNH ===== -->
+    <div id="adm_main">
+      <div class="card noprint"><div class="card-b">
+        <div class="field" style="margin-bottom:10px">
+          <label>Đường dẫn (URL) nơi bạn đăng tải app này — để mã QR mở đúng trang</label>
+          <input id="baseUrl" type="text" value="https://ngoctuoc.com/quytrinh.html" placeholder="vd: https://ngoctuoc.com/quytrinh.html" oninput="NT.renderAdmin()">
         </div>
-        <div class="cred" id="admCred"></div>
+        <div style="font-size:12.5px;color:var(--muted)">Để trống nếu chỉ dùng nội bộ (QR dùng đường dẫn hiện tại của trang). Xem tất cả thẻ QR ở tab <b>Thẻ QR để in</b>, mật khẩu ở tab <b>Danh sách tài khoản</b>.</div>
       </div></div>
-      <div class="card"><div class="card-b">
-        <h3 class="serif" style="font-size:17px;margin-bottom:8px">Hướng dẫn phát hành</h3>
-        <ol style="font-size:13.5px;color:var(--muted);padding-left:18px;line-height:1.75;margin:0">
-          <li>Nhập URL nơi bạn đăng tải file này (nếu có).</li>
-          <li>Chọn bộ phận → hệ thống tạo mã QR + tài khoản/mật khẩu.</li>
-          <li>In mã QR và phát cho nhân viên mới của bộ phận đó.</li>
-          <li>Nhân viên dùng điện thoại quét QR là vào thẳng phần việc của mình.</li>
-        </ol>
-        <button class="btn noprint" style="margin-top:14px" onclick="window.print()">🖨️  In toàn bộ thẻ QR các bộ phận</button>
-        <button class="btn ghost noprint" style="margin-top:9px" onclick="NT.copyCred()">📋  Sao chép danh sách tài khoản</button>
+
+      <div class="adm-grid" style="margin-top:14px">
+        <div class="card"><div class="card-b">
+          <div class="field"><label>Xem/tạo mã QR một bộ phận</label>
+            <select id="admDept" onchange="NT.renderAdmin()"></select></div>
+          <div class="qrframe" style="margin-top:12px">
+            <img class="lotus" data-logo="ngoctuoc" alt="Ngọc Tước">
+            <div><canvas id="admQr" width="224" height="224"></canvas></div>
+          </div>
+          <div class="cred" id="admCred"></div>
+        </div></div>
+        <div class="card"><div class="card-b">
+          <h3 class="serif" style="font-size:17px;margin-bottom:8px">Hướng dẫn phát hành</h3>
+          <ol style="font-size:13.5px;color:var(--muted);padding-left:18px;line-height:1.75;margin:0">
+            <li>Nhập URL nơi bạn đăng tải file này (nếu có).</li>
+            <li>Sang tab <b>Thẻ QR để in</b> → bấm In → phát cho nhân viên mới.</li>
+            <li>Nhân viên quét QR là vào thẳng phần việc của mình.</li>
+            <li>Xem nội dung từng bộ phận ở lưới bên dưới.</li>
+          </ol>
+        </div></div>
+      </div>
+
+      <div class="sec-h"><span class="mark"></span><h3 class="serif">Xem nội dung từng bộ phận</h3><span class="line"></span></div>
+      <div class="note-b" style="border:1px solid var(--line);border-radius:14px;margin-bottom:12px">Bấm một bộ phận để xem đúng nội dung nhân viên bộ phận đó nhìn thấy (quy trình, nhật trình, checklist, KPI…). Xem xong bấm <b>← Quản trị</b> ở góc trên để quay lại.</div>
+      <div class="quicknav" id="admDeptGrid" style="grid-template-columns:repeat(3,1fr)"></div>
+    </div>
+
+    <!-- ===== PANEL: THẺ QR ===== -->
+    <div id="adm_qr" class="hidden">
+      <div class="sec-h"><span class="mark"></span><h3 class="serif">Toàn bộ thẻ QR — để in &amp; phát</h3><span class="line"></span></div>
+      <div class="note-b noprint" style="border:1px solid var(--line);border-radius:14px;margin-bottom:12px">Mỗi thẻ gồm logo + mã QR + tài khoản. Bấm nút bên dưới để in, cắt và phát cho từng bộ phận. Nhân viên quét QR là đăng nhập thẳng.</div>
+      <button class="btn noprint" style="margin-bottom:14px" onclick="window.print()">🖨️  In toàn bộ thẻ QR</button>
+      <div class="printgrid" id="printGrid"></div>
+    </div>
+
+    <!-- ===== PANEL: TÀI KHOẢN ===== -->
+    <div id="adm_acc" class="hidden">
+      <div class="sec-h"><span class="mark"></span><h3 class="serif">Danh sách tài khoản</h3><span class="line"></span></div>
+      <div class="card noprint"><div class="card-b">
+        <button class="btn ghost" style="width:auto;padding:9px 16px;font-size:13px;margin-bottom:12px" onclick="NT.copyCred()">📋  Sao chép danh sách</button>
+        <div style="overflow-x:auto"><table class="acc" id="accTable"></table></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:12px">⚠️ Tài liệu nội bộ. Giữ danh sách này bảo mật.</div>
       </div></div>
     </div>
 
-    <div class="sec-h"><span class="mark"></span><h3 class="serif">Xem nội dung từng bộ phận</h3><span class="line"></span></div>
-    <div class="note-b" style="border:1px solid var(--line);border-radius:14px;margin-bottom:12px">Bấm một bộ phận để xem đúng nội dung nhân viên bộ phận đó nhìn thấy (quy trình, nhật trình, checklist, KPI…). Xem xong bấm <b>← Quản trị</b> ở góc trên để quay lại.</div>
-    <div class="quicknav" id="admDeptGrid" style="grid-template-columns:repeat(3,1fr)"></div>
-
-    <div class="sec-h"><span class="mark"></span><h3 class="serif">Toàn bộ thẻ QR — để in &amp; phát</h3><span class="line"></span></div>
-    <div class="printgrid" id="printGrid"></div>
-
-    <div class="card noprint" style="margin-top:22px"><div class="card-b">
-      <h3 class="serif" style="font-size:17px;margin-bottom:8px">Danh sách tài khoản</h3>
-      <div style="overflow-x:auto"><table class="acc" id="accTable"></table></div>
-      <div style="font-size:12px;color:var(--muted);margin-top:12px">⚠️ Tài liệu nội bộ. Nên đổi mật khẩu mặc định và giữ danh sách này bảo mật.</div>
-    </div></div>
   </div>
-  <div class="footer">
+  <div class="footer noprint">
     <img data-logo="ngoctuoc" alt="Ngọc Tước"><span class="fdiv"></span>
     <span><b>Doanket Commercial</b> — Nhà hàng Ngọc Tước · Tài liệu nội bộ</span>
     <span class="fdiv"></span><img data-logo="doanket" alt="Doanket">
@@ -2198,7 +2215,11 @@ var NT = (function(){
     var g=document.getElementById("admDeptGrid");g.innerHTML="";
     D.departments.forEach(function(d){var b=document.createElement("button");b.onclick=function(){adminView(d.id)};
       b.innerHTML=esc(d.icon+"  "+d.name)+'<span class="qsub">'+esc(d.short)+'</span>';g.appendChild(b);});
-    renderAdmin();renderAccTable();}
+    renderAdmin();renderAccTable();admTab("main");}
+  function admTab(name){
+    ["main","qr","acc"].forEach(function(n){var el=document.getElementById("adm_"+n);if(el)el.classList.toggle("hidden",n!==name);});
+    Array.prototype.forEach.call(document.querySelectorAll("#admTabs .tab"),function(el){el.classList.toggle("active",el.dataset.at===name);});
+    window.scrollTo(0,0);}
   function renderAdmin(){var id=document.getElementById("admDept").value,d=dept(id);
     drawQR(document.getElementById("admQr"),loginUrl(id));
     document.getElementById("admCred").innerHTML='<div style="margin-top:2px"><b>'+esc(d.icon+" "+d.name)+'</b></div>'+
@@ -2231,7 +2252,7 @@ var NT = (function(){
     if(s&&NT_ACCOUNTS[s]){openApp(s);return;}
     show("login");
   }
-  return {doLogin:doLogin,logout:logout,toggleTheme:toggleTheme,setTab:setTab,resetChk:resetChk,renderAdmin:renderAdmin,copyCred:copyCred,boot:boot,adminView:adminView,backToAdmin:backToAdmin};
+  return {doLogin:doLogin,logout:logout,toggleTheme:toggleTheme,setTab:setTab,resetChk:resetChk,renderAdmin:renderAdmin,copyCred:copyCred,boot:boot,adminView:adminView,backToAdmin:backToAdmin,admTab:admTab};
 })();
 window.addEventListener("DOMContentLoaded", NT.boot);
 </script>
