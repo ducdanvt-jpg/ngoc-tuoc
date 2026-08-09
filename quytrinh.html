@@ -307,8 +307,9 @@ table.acc code{font-size:12.5px;color:var(--ink)}
         <div class="role" id="hRole">—</div>
       </div>
       <div class="spacer"></div>
+      <button class="iconbtn hidden" id="btnAdmin" onclick="NT.backToAdmin()" title="Về trang quản trị">← Quản trị</button>
       <button class="iconbtn" onclick="NT.toggleTheme()" title="Đổi giao diện sáng/tối" aria-label="Đổi giao diện">◐</button>
-      <button class="iconbtn" onclick="NT.logout()">Đăng xuất</button>
+      <button class="iconbtn" id="btnLogout" onclick="NT.logout()">Đăng xuất</button>
     </div>
   </header>
   <nav class="tabs"><div class="tabs-scroll" id="tabs"></div></nav>
@@ -360,6 +361,10 @@ table.acc code{font-size:12.5px;color:var(--ink)}
         <button class="btn ghost noprint" style="margin-top:9px" onclick="NT.copyCred()">📋  Sao chép danh sách tài khoản</button>
       </div></div>
     </div>
+
+    <div class="sec-h"><span class="mark"></span><h3 class="serif">Xem nội dung từng bộ phận</h3><span class="line"></span></div>
+    <div class="note-b" style="border:1px solid var(--line);border-radius:14px;margin-bottom:12px">Bấm một bộ phận để xem đúng nội dung nhân viên bộ phận đó nhìn thấy (quy trình, nhật trình, checklist, KPI…). Xem xong bấm <b>← Quản trị</b> ở góc trên để quay lại.</div>
+    <div class="quicknav" id="admDeptGrid" style="grid-template-columns:repeat(3,1fr)"></div>
 
     <div class="sec-h"><span class="mark"></span><h3 class="serif">Toàn bộ thẻ QR — để in &amp; phát</h3><span class="line"></span></div>
     <div class="printgrid" id="printGrid"></div>
@@ -2059,7 +2064,7 @@ var NT_ADMIN = { user:"admin", pass:"adminngoctuoc" };
 
 /* ============ APP ============ */
 var NT = (function(){
-  var D = window.NT_DATA, L = window.NT_LOGOS||{}, cur=null, curTab="overview";
+  var D = window.NT_DATA, L = window.NT_LOGOS||{}, cur=null, curTab="overview", adminMode=false;
   var TABS = [
     ["overview","Tổng quan"],["day","Một ngày làm việc"],["phrases","Câu nói chuẩn"],
     ["rules","Nên & Cấm"],["process","Quy trình chi tiết"],["checklist","Checklist"],
@@ -2094,8 +2099,12 @@ var NT = (function(){
     var t=document.getElementById("tabs");t.innerHTML="";
     TABS.forEach(function(tb){var d=document.createElement("div");d.className="tab";d.textContent=tb[1];d.tabIndex=0;
       d.onclick=function(){setTab(tb[0])};d.onkeydown=function(e){if(e.key==="Enter")setTab(tb[0])};d.dataset.id=tb[0];t.appendChild(d);});
+    document.getElementById("btnAdmin").classList.toggle("hidden",!adminMode);
+    document.getElementById("btnLogout").classList.toggle("hidden",adminMode);
     show("app");setTab("overview");window.scrollTo(0,0);
   }
+  function adminView(id){ openApp(id); }
+  function backToAdmin(){ openAdmin(); window.scrollTo(0,0); }
   function setTab(id){curTab=id;
     Array.prototype.forEach.call(document.querySelectorAll(".tab"),function(el){el.classList.toggle("active",el.dataset.id===id)});
     var host=document.getElementById("content");host.innerHTML=render(id);
@@ -2184,8 +2193,11 @@ var NT = (function(){
     return base+"#login="+encodeURIComponent(user)+"~"+encodeURIComponent(NT_ACCOUNTS[user]);}
 
   /* ============ ADMIN ============ */
-  function openAdmin(){show("admin");var sel=document.getElementById("admDept");sel.innerHTML="";
+  function openAdmin(){adminMode=true;show("admin");var sel=document.getElementById("admDept");sel.innerHTML="";
     D.departments.forEach(function(d){var o=document.createElement("option");o.value=d.id;o.textContent=d.icon+"  "+d.name;sel.appendChild(o);});
+    var g=document.getElementById("admDeptGrid");g.innerHTML="";
+    D.departments.forEach(function(d){var b=document.createElement("button");b.onclick=function(){adminView(d.id)};
+      b.innerHTML=esc(d.icon+"  "+d.name)+'<span class="qsub">'+esc(d.short)+'</span>';g.appendChild(b);});
     renderAdmin();renderAccTable();}
   function renderAdmin(){var id=document.getElementById("admDept").value,d=dept(id);
     drawQR(document.getElementById("admQr"),loginUrl(id));
@@ -2219,7 +2231,7 @@ var NT = (function(){
     if(s&&NT_ACCOUNTS[s]){openApp(s);return;}
     show("login");
   }
-  return {doLogin:doLogin,logout:logout,toggleTheme:toggleTheme,setTab:setTab,resetChk:resetChk,renderAdmin:renderAdmin,copyCred:copyCred,boot:boot};
+  return {doLogin:doLogin,logout:logout,toggleTheme:toggleTheme,setTab:setTab,resetChk:resetChk,renderAdmin:renderAdmin,copyCred:copyCred,boot:boot,adminView:adminView,backToAdmin:backToAdmin};
 })();
 window.addEventListener("DOMContentLoaded", NT.boot);
 </script>
