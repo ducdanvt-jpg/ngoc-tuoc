@@ -347,6 +347,27 @@ h1,h2{text-wrap:balance}
   .lead-aside{position:static}
 }
 
+/* ---------- Menu pages (scanned real menu) ---------- */
+.menu-pages{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:22px;
+  max-width:1040px;margin:0 auto;
+}
+.menu-pages a{
+  display:block;border-radius:12px;overflow:hidden;
+  border:1px solid var(--line);background:var(--paper);
+  box-shadow:0 8px 26px rgba(0,0,0,.08);transition:.28s ease;position:relative;
+}
+.menu-pages a::after{
+  content:"⤢";position:absolute;top:10px;right:10px;
+  width:34px;height:34px;display:grid;place-items:center;
+  background:rgba(20,19,18,.62);color:#fff;border-radius:50%;
+  font-size:1rem;opacity:0;transition:.25s;
+}
+.menu-pages a:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.menu-pages a:hover::after{opacity:1}
+.menu-pages img{width:100%;height:auto;display:block}
+@media(max-width:600px){.menu-pages{grid-template-columns:1fr;gap:16px}}
+
 /* ---------- Creed (philosophy emphasis block) ---------- */
 .creed{
   max-width:640px;margin:36px auto;padding:26px 34px;
