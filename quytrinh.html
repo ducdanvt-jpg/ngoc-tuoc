@@ -42,6 +42,7 @@ h1,h2,h3,h4{margin:0;line-height:1.22;font-weight:600}
 .serif{font-family:var(--serif)}
 a{color:var(--gold-dk)}
 .hidden{display:none !important}
+.prop-b{font-size:13px;color:var(--text);border:1px dashed var(--warn);border-radius:12px;padding:12px 16px;margin-bottom:16px;background:var(--panel)}
 .wrap{max-width:940px;margin:0 auto;padding:0 18px}
 .eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dk);font-weight:700}
 img{max-width:100%}
@@ -2063,6 +2064,191 @@ window.NT_DATA = {
   ]
 };
 
+/* ===== ĐỀ XUẤT 10.2026: việc hằng tuần, hằng tháng, báo cáo (CHỜ PHÊ DUYỆT) ===== */
+window.NT_PERIOD = {
+ "captain": {
+  "weekly": [
+   "Rà phản hồi khách và lỗi vận hành trong tuần; tìm nguyên nhân lặp lại, giao biện pháp theo bộ phận, kiểm kết quả của tuần trước.",
+   "Lập lịch ca tuần sau theo đặt bàn và giờ cao điểm; tổ chức một buổi hướng dẫn nghiệp vụ ngắn từ lỗi thực tế, kèm hỗ trợ người mới hội nhập.",
+   "Kiểm chéo chất lượng bảng kiểm và tổng vệ sinh; tổng hợp vật dụng bể vỡ, hàng hủy, hao hụt, đề nghị sửa chữa, chọn việc ưu tiên."
+  ],
+  "monthly": [
+   "Tổng hợp doanh thu, chi phí nguyên vật liệu kho và bar, chi phí nhân sự, hao hụt, bể vỡ từ số liệu đã đối soát. Phân tích biến động, đề xuất kiểm soát chi phí trong phạm vi chức năng.",
+   "Đánh giá nhu cầu nhân sự, năng lực theo vị trí, kết quả đào tạo; đề xuất tuyển dụng, đào tạo thêm, người kế cận.",
+   "Rà tiêu chuẩn phục vụ, vệ sinh, tài sản, kế hoạch bảo dưỡng; lập kế hoạch cải tiến tháng sau, nêu nguồn lực cần, trình cấp trên quyết."
+  ],
+  "report": [
+   "Báo cáo: nhật ký ca; tổng hợp tuần (chất lượng, nhân lực, khắc phục); báo cáo tháng (hoạt động, chi phí, nhân sự, kiến nghị).",
+   "Mục tiêu định lượng chưa có, chờ Ban lãnh đạo chốt sau khi có dữ liệu nền."
+  ]
+ },
+ "baove": {
+  "weekly": [
+   "Rà nhật ký chuyến xe, quãng đường, nhiên liệu; đối chiếu chuyến đã chạy với yêu cầu điều xe, giải thích chuyến đổi hoặc chi phí bất thường.",
+   "Kiểm kỹ tình trạng xe theo danh mục được giao; lập danh sách hạng mục cần bảo dưỡng; tổng vệ sinh khoang xe theo lịch.",
+   "Đánh giá luồng xe giờ đông, điểm ùn, cách quản lý chìa khóa; thống nhất với Lễ tân phương án đón trả, người trực thay, xử lý thất lạc."
+  ],
+  "monthly": [
+   "Tổng hợp số chuyến, quãng đường, nhiên liệu, chi phí vận hành, sự cố; đề xuất điều chỉnh cách dùng xe.",
+   "Rà hạn hồ sơ phương tiện và kế hoạch bảo dưỡng theo thời gian hoặc quãng đường; đề xuất lịch làm trước khi đến hạn, theo dõi hoàn thành.",
+   "Đánh giá rủi ro bãi xe, bộ đàm, tủ chìa khóa; cùng ôn tình huống mất tài sản, va chạm, hỗ trợ khách cần trợ giúp."
+  ],
+  "report": [
+   "Báo cáo: sổ giao nhận xe và chìa khóa; nhật ký chuyến và sự cố; bảng tổng hợp nhiên liệu, chi phí, danh mục bảo dưỡng đến hạn."
+  ]
+ },
+ "taixe": {
+  "weekly": [
+   "Rà nhật ký chuyến xe, quãng đường, nhiên liệu; đối chiếu chuyến đã chạy với yêu cầu điều xe, giải thích chuyến đổi hoặc chi phí bất thường.",
+   "Kiểm kỹ tình trạng xe theo danh mục được giao; lập danh sách hạng mục cần bảo dưỡng; tổng vệ sinh khoang xe theo lịch.",
+   "Đánh giá luồng xe giờ đông, điểm ùn, cách quản lý chìa khóa; thống nhất với Lễ tân phương án đón trả, người trực thay, xử lý thất lạc."
+  ],
+  "monthly": [
+   "Tổng hợp số chuyến, quãng đường, nhiên liệu, chi phí vận hành, sự cố; đề xuất điều chỉnh cách dùng xe.",
+   "Rà hạn hồ sơ phương tiện và kế hoạch bảo dưỡng theo thời gian hoặc quãng đường; đề xuất lịch làm trước khi đến hạn, theo dõi hoàn thành.",
+   "Đánh giá rủi ro bãi xe, bộ đàm, tủ chìa khóa; cùng ôn tình huống mất tài sản, va chạm, hỗ trợ khách cần trợ giúp."
+  ],
+  "report": [
+   "Báo cáo: sổ giao nhận xe và chìa khóa; nhật ký chuyến và sự cố; bảng tổng hợp nhiên liệu, chi phí, danh mục bảo dưỡng đến hạn."
+  ]
+ },
+ "letan": {
+  "weekly": [
+   "Đối chiếu danh sách đặt với lượt khách thực; tổng hợp số đặt, hủy, không đến, thay đổi lớn và nguyên nhân ảnh hưởng bố trí bàn.",
+   "Rà việc chuyển yêu cầu đặc biệt giữa Lễ tân, Giám sát, Bếp; luyện tình huống hết bàn, khách đến sớm hoặc muộn, đổi số khách.",
+   "Kiểm thực đơn, danh thiếp, vật dụng đón tiếp, sổ dữ liệu; đề xuất bổ sung, loại bản lỗi hoặc thông tin trùng; chuẩn bị danh sách đặt chỗ quan trọng tuần sau."
+  ],
+  "monthly": [
+   "Phân tích đặt bàn theo ngày, khung giờ, phòng; đề xuất cách bố trí, xác nhận và nhắc lịch để giảm bàn trống do khách không đến.",
+   "Tổng hợp phản hồi khâu đón tiễn và mức hoàn thành yêu cầu đặc biệt; đề xuất cải thiện kịch bản tiếp nhận, dẫn bàn, phối hợp.",
+   "Rà độ chính xác và quyền truy cập dữ liệu khách; cập nhật thông tin phục vụ trong phạm vi được phép; kiểm tài liệu giới thiệu đang dùng."
+  ],
+  "report": [
+   "Báo cáo: danh sách đặt bàn và bàn giao ca; thống kê tuần về hủy, không đến; tổng hợp tháng về nhu cầu đặt chỗ, phản hồi, kiến nghị."
+  ]
+ },
+ "order": {
+  "weekly": [
+   "Tổng vệ sinh chuyên sâu cuối tuần: khu vực, tủ phục vụ, chỗ khó với tới; kiểm kết quả trước khi đưa vào phục vụ.",
+   "Đối chiếu lỗi gọi món, chậm món, thanh toán, phản hồi trong tuần; hướng dẫn lại bước còn yếu, kiểm thực hành ngay tại khu vực.",
+   "Kiểm đếm luân phiên dụng cụ theo phòng hoặc tủ; tổng hợp thiếu, bể vỡ, mức dự trữ cần chỉnh; đề xuất bố trí ca khu vực theo đặt chỗ tuần sau."
+  ],
+  "monthly": [
+   "Đánh giá chất lượng phục vụ từng khu vực từ phản hồi, lỗi, kết quả bảng kiểm; đề xuất đổi cách bố trí bàn, tủ phục vụ, luồng đi.",
+   "Cùng kiểm kê toàn bộ dụng cụ khu vực, đối chiếu sổ bàn giao và bể vỡ; lập nhu cầu thay, bổ sung.",
+   "Đánh giá kỹ năng từng vị trí trong nhóm; đề xuất nội dung đào tạo và tiêu chuẩn cần chỉnh; báo cáo hiệu quả biện pháp trong tháng."
+  ],
+  "report": [
+   "Báo cáo: nhật ký khu vực, phản hồi khách; tổng hợp lỗi tuần; kiểm kê dụng cụ và đánh giá chất lượng khu vực tháng."
+  ]
+ },
+ "thungan": {
+  "weekly": [
+   "Đối chiếu giao dịch thẻ, chuyển khoản, ví với báo cáo thanh toán hoặc sao kê; lập danh sách giao dịch chưa về tiền, phí, khoản cần kiểm.",
+   "Rà toàn bộ hóa đơn hủy, giảm giá, hoàn, điều chỉnh trong tuần với chứng từ duyệt; kiểm cách ghi thu tua PR, tránh thiếu hoặc trùng doanh thu.",
+   "Sắp hồ sơ theo ngày và ca; kiểm chứng từ thiếu, biên bản chênh lệch chưa xử lý; thử kết xuất dữ liệu, đề nghị hỗ trợ nếu thiết bị hoặc phần mềm lỗi lặp lại."
+  ],
+  "monthly": [
+   "Cùng kế toán hoặc chức năng tài chính được phân công đối chiếu doanh thu POS, tiền đã nộp, giao dịch ngân hàng; giải trình chênh lệch còn treo từng khoản.",
+   "Tổng hợp doanh thu theo phương thức thanh toán, giá trị giảm hoặc hủy, chênh lệch quỹ, thu tua PR; phân tích biến động bất thường, trình cấp trên.",
+   "Rà phân quyền POS, danh mục giá, chương trình ưu đãi với bộ phận có thẩm quyền; đề xuất cập nhật; kiểm lưu trữ và khả năng tra cứu chứng từ tháng."
+  ],
+  "report": [
+   "Báo cáo: doanh thu, quỹ, tiền nộp, thu tua PR theo ca; danh sách giao dịch chờ đối soát tuần; bảng đối chiếu và tổng hợp doanh thu tháng."
+  ]
+ },
+ "tiepthuc": {
+  "weekly": [
+   "Rà lỗi giao sai, thiếu đồ đi kèm, rơi đổ, trả món; trao đổi với Tả hổ và Giám sát về nguyên nhân, thống nhất cách xác nhận khi nhận và giao món.",
+   "Tổng vệ sinh khuôn viên và dụng cụ hỗ trợ (khay, xe đẩy, kệ, khe góc tuyến vận chuyển); kiểm bánh xe, tay cầm, khay chống trượt, đề nghị sửa hoặc thay.",
+   "Kiểm đếm luân phiên dụng cụ; đánh giá điểm tập kết và đường đi giờ cao điểm; luyện bưng bê, xử lý món nóng, phối hợp khi nhiều phiếu cùng ra."
+  ],
+  "monthly": [
+   "Cùng kiểm kê dụng cụ Tiếp thực, đối chiếu bể vỡ và bàn giao; tổng hợp nhu cầu thay theo tần suất dùng thực tế.",
+   "Tổng hợp số lần sai hoặc chậm giao món có ghi nhận, sự cố rơi đổ và nguyên nhân; đề xuất đổi tuyến di chuyển hoặc chỗ chờ món.",
+   "Đánh giá định lượng nước chấm và đồ đi kèm theo lượng dùng, dư, hủy; đề xuất mức chuẩn bị theo lượng khách để tránh thiếu hoặc lãng phí."
+  ],
+  "report": [
+   "Báo cáo: nhật ký sự cố, bàn giao dụng cụ và nguyên liệu; tổng hợp lỗi tuần; kiểm kê tháng, phân tích bể vỡ, đề xuất cải thiện vận chuyển món."
+  ]
+ },
+ "taho": {
+  "weekly": [
+   "Tổng hợp phiếu chậm, sót, đổi, hủy; tìm món hoặc tổ bếp hay nghẽn; họp ngắn với Bếp và Giám sát để chỉnh phối hợp.",
+   "Kiểm cách đánh dấu món, xác nhận đổi hủy, đối chiếu cuối ca; thống nhất cách ghi phiếu để xử lý nhiều bàn không nhầm.",
+   "Thử máy in, vật tư dự phòng; diễn tập nhận và lưu phiếu khi hệ thống gián đoạn, theo phương án Quản lý chấp thuận."
+  ],
+  "monthly": [
+   "Tổng hợp thời gian ra món từ phiếu có dữ liệu, tần suất món trả và hủy; đề xuất nhịp phục vụ và định mức thời gian theo nhóm món để Bếp và Quản lý xem xét.",
+   "Rà danh mục đồ đi kèm, yêu cầu trình bày, cách nhận diện món đặc biệt với Bếp; cập nhật tài liệu chung khi đổi thực đơn.",
+   "Đánh giá khả năng đáp ứng cao điểm; đề xuất bố trí điểm ra món, dụng cụ theo dõi, nhân lực hỗ trợ; rà hiệu quả cải tiến tháng trước."
+  ],
+  "report": [
+   "Báo cáo: nhật ký món chậm, trả, hủy; đối chiếu phiếu cuối ca; tổng hợp tuần về lỗi phối hợp; báo cáo tháng về tiến độ, chất lượng ra món."
+  ]
+ },
+ "bar": {
+  "weekly": [
+   "Đối chiếu nguyên liệu, rượu, đồ uống thực xuất với số bán, đồ tặng được duyệt, hàng hủy; kiểm chai đã mở, hàng gần hạn; đề xuất mức chuẩn bị tuần sau.",
+   "Tổng vệ sinh sâu kệ, khe tủ, thiết bị, dụng cụ theo hướng dẫn; kiểm độ ổn định thiết bị, đề xuất bảo dưỡng khi có dấu hiệu lạ.",
+   "Rà nhật ký chăm hồ cá, lượng thức ăn, sự cố; cùng Bảo trì kiểm lọc, bơm, thác khói theo hướng dẫn thiết bị; tách dụng cụ hồ cá khỏi dụng cụ thực phẩm."
+  ],
+  "monthly": [
+   "Kiểm kê toàn bộ đồ uống, nguyên liệu, dụng cụ quầy; đối chiếu xuất nhập tồn, hàng hủy, bể vỡ; tổng hợp giá trị chênh lệch để trình xử lý.",
+   "Phân tích lượng bán, mức tiêu hao, hao hụt theo nhóm đồ uống, trái cây, đồ ăn nhẹ; đề xuất chỉnh định lượng hoặc danh mục chuẩn bị.",
+   "Tổng hợp tình trạng máy móc, hồ cá, thác khói; đề xuất lịch bảo dưỡng, vật tư thay; đánh giá hiệu quả xử lý bất thường trong tháng."
+  ],
+  "report": [
+   "Báo cáo: xuất tồn và hủy theo ca, nhật ký hồ cá; đối chiếu tiêu hao tuần; kiểm kê tháng, đề nghị bảo dưỡng, bổ sung hàng."
+  ]
+ },
+ "kho": {
+  "weekly": [
+   "Kiểm kê luân phiên từng nhóm hàng, đối chiếu sổ với thực tế; truy nguyên sai lệch nhập, xuất, trả, hủy, báo xử lý trước kỳ kiểm kê toàn kho.",
+   "Lập danh sách hàng gần hạn và chậm dùng; đề xuất điều chuyển, ưu tiên xuất, hoặc mức đặt bổ sung theo nhu cầu tuần tới.",
+   "Tổng vệ sinh kệ, chà sàn theo khu; kiểm pallet, dấu hiệu ẩm hoặc côn trùng, thông gió, cách xếp hàng; tổng hợp nhà cung cấp giao thiếu hoặc giao lỗi."
+  ],
+  "monthly": [
+   "Cùng bộ phận kiểm tra được phân công kiểm kê toàn kho; lập bảng nhập, xuất, tồn theo mặt hàng, nêu chênh lệch, hồ sơ đề nghị xử lý.",
+   "Phân tích mức dùng bia, nước, vật tư so với lượng khách hoặc hoạt động phục vụ; đề xuất chỉnh tồn tối thiểu, tối đa, lượng đặt để bớt tồn lâu hoặc thiếu hàng.",
+   "Đánh giá chất lượng, độ đúng hẹn của nguồn cung từ biên bản giao nhận; rà tình trạng kho và thiết bị bảo quản, đề xuất sửa hoặc thay."
+  ],
+  "report": [
+   "Báo cáo: phiếu nhập, xuất, trả, hủy và tồn ca; danh sách gần hạn tuần; biên bản kiểm kê, bảng nhập xuất tồn, đề nghị mua hàng tháng."
+  ]
+ },
+ "tapvu": {
+  "weekly": [
+   "Tổng vệ sinh chuyên sâu luân phiên: khe góc, chân kệ, cửa, tường bám bẩn, khu tập kết rác; làm ngoài giờ phục vụ, kiểm kết quả trước khi mở lại khu vực.",
+   "Rà bảng kiểm theo giờ để tìm chỗ hay sót hoặc nhanh bẩn; chỉnh tuyến vệ sinh và lúc bổ sung người cùng Giám sát.",
+   "Kiểm phân khu dụng cụ vệ sinh, nhãn hóa chất, lượng dùng; bỏ dụng cụ hỏng, đề xuất bổ sung đồ bảo hộ; cùng kiểm thoát nước và bẫy mỡ theo lịch chuyên sâu."
+  ],
+  "monthly": [
+   "Tổng hợp mức tiêu hao hóa chất, túi rác, giấy, dụng cụ so với khối lượng phục vụ; đề xuất định mức cấp phát và mua thay.",
+   "Đánh giá sự cố trơn trượt, bể vỡ, tắc thoát nước, mùi, dấu hiệu côn trùng; cùng bộ phận liên quan lập phương án khắc phục và kiểm hiệu quả.",
+   "Rà toàn bộ kế hoạch vệ sinh, tình trạng máy rửa, kệ, dụng cụ; ôn thao tác phân loại đồ bẩn, xử lý hóa chất, vệ sinh trước khi hỗ trợ sơ chế."
+  ],
+  "report": [
+   "Báo cáo: bảng kiểm vệ sinh, bàn giao dụng cụ và sự cố; nghiệm thu tổng vệ sinh tuần; tổng hợp tiêu hao, hư hỏng, nhu cầu cải thiện tháng."
+  ]
+ },
+ "canhquan": {
+  "weekly": [
+   "Kiểm có hệ thống sức khỏe cây từng khu; tỉa tạo dáng nhẹ, chăm đất, xử lý cỏ khi cần; lập lịch bón phân hoặc xử lý sâu bệnh theo hướng dẫn được duyệt.",
+   "Rà nhật ký tuần tra và điểm khó quan sát; cùng kiểm đèn, camera, khóa, hàng rào; đề xuất khắc phục chỗ nguy cơ.",
+   "Kiểm dụng cụ tưới, kéo, đèn pin, phương tiện liên lạc; rà đầu mối liên hệ khẩn cấp; luyện tình huống báo động và bàn giao xe gửi đêm."
+  ],
+  "monthly": [
+   "Đánh giá tình trạng toàn bộ cây, nhu cầu thay chậu, thay đất, bón phân hoặc thay cây; lập kế hoạch tháng tới theo thời tiết. Chỉ xử lý sâu bệnh khi cần, theo hướng dẫn, không phun định kỳ máy móc.",
+   "Tổng hợp vật tư chăm cây, lượng dùng, hạng mục hư hỏng; đề xuất mua thêm, sửa hệ thống tưới, gia cố cây có nguy cơ đổ.",
+   "Tổng hợp sự cố an ninh, kết quả khắc phục đèn, camera, khóa, điểm tuần tra; cùng Quản lý rà phương án bảo vệ tài sản và tình huống khẩn cấp."
+  ],
+  "report": [
+   "Báo cáo: nhật ký tuần tra và chăm cây, sổ giao ca sáng; danh mục khắc phục tuần; tổng hợp an ninh, vật tư, kế hoạch cảnh quan tháng."
+  ]
+ }
+};
+
 </script>
 <script>
 window.NT_LOGOS={
@@ -2088,8 +2274,9 @@ var NT = (function(){
     ["overview","Tổng quan"],["day","Một ngày làm việc"],["phrases","Câu nói chuẩn"],
     ["rules","Nên & Cấm"],["process","Quy trình chi tiết"],["checklist","Checklist"],
     ["kpi","KPI đánh giá"],["exc","Xử lý tình huống"],["road","Lộ trình 7 ngày"],
-    ["card","Thẻ tóm tắt"]
+    ["card","Thẻ tóm tắt"],["period","Tuần & Tháng"]
   ];
+  function hasPeriod(id){return !!(window.NT_PERIOD&&window.NT_PERIOD[id]);}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
   function dept(id){return D.departments.find(function(x){return x.id===id})}
   function fillLogos(root){ (root||document).querySelectorAll("img[data-logo]").forEach(function(im){
@@ -2116,7 +2303,7 @@ var NT = (function(){
     document.getElementById("hName").textContent=cur.name;
     document.getElementById("hRole").textContent=cur.short;
     var t=document.getElementById("tabs");t.innerHTML="";
-    TABS.forEach(function(tb){var d=document.createElement("div");d.className="tab";d.textContent=tb[1];d.tabIndex=0;
+    TABS.forEach(function(tb){if(tb[0]==="period"&&!hasPeriod(cur.id))return;var d=document.createElement("div");d.className="tab";d.textContent=tb[1];d.tabIndex=0;
       d.onclick=function(){setTab(tb[0])};d.onkeydown=function(e){if(e.key==="Enter")setTab(tb[0])};d.dataset.id=tb[0];t.appendChild(d);});
     document.getElementById("btnAdmin").classList.toggle("hidden",!adminMode);
     document.getElementById("btnLogout").classList.toggle("hidden",adminMode);
@@ -2138,7 +2325,7 @@ var NT = (function(){
   function secH(t){return '<div class="sec-h"><span class="mark"></span><h3 class="serif">'+esc(t)+'</h3><span class="line"></span></div>';}
 
   function render(id){var f={overview:renderOverview,day:renderDay,phrases:renderPhrases,rules:renderRules,process:renderProcess,
-    checklist:renderChecklist,kpi:renderKpi,exc:renderExc,road:renderRoad,card:renderCard,common:renderCommon};
+    checklist:renderChecklist,kpi:renderKpi,exc:renderExc,road:renderRoad,card:renderCard,common:renderCommon,period:renderPeriod};
     return (f[id]||function(){return""})();}
 
   function renderOverview(){
@@ -2198,6 +2385,12 @@ var NT = (function(){
   function renderCard(){return secH("Thẻ tóm tắt — mang theo trong ca")+'<div class="tcard"><img class="wm" src="'+(L.ngoctuoc||"")+'" alt="">'+
     cur.card.map(function(c){return '<div class="tk"><div class="k">'+esc(c.k)+'</div><div class="v">'+esc(c.v)+'</div></div>';}).join("")+
     '<div class="note">Lưu màn hình này, mang theo trong ca cho đến khi thuộc.</div></div>';}
+  function renderPeriod(){var p=window.NT_PERIOD[cur.id];
+    function lst(a){return a.map(function(t,i){return '<div class="step"><div class="k">'+(i+1)+'</div><div><div class="t" style="font-weight:500">'+esc(t)+'</div></div></div>';}).join("");}
+    return '<div class="prop-b"><b>Bản đề xuất, chờ Ban lãnh đạo phê duyệt.</b> Việc hằng tuần, hằng tháng là lịch công tác đề xuất. Không thay thế việc xử lý ngay khi có sự cố. Quy trình trong ca ở các tab khác vẫn áp dụng như cũ.</div>'+
+      secH("Công việc hằng tuần")+'<div class="card"><div class="card-b"><div class="shift">'+lst(p.weekly)+'</div></div></div>'+
+      secH("Công việc hằng tháng")+'<div class="card"><div class="card-b"><div class="shift">'+lst(p.monthly)+'</div></div></div>'+
+      secH("Báo cáo &amp; tiêu chuẩn cần đạt")+'<div class="card"><div class="card-b"><ul>'+p.report.map(function(t){return '<li>'+esc(t)+'</li>';}).join("")+'</ul></div></div>';}
   function renderCommon(){var c=D.common,h=secH(c.title)+'<div class="card"><div class="card-b"><div style="font-size:13.8px;color:var(--muted);margin-bottom:4px">'+esc(c.intro)+'</div>';
     c.blocks.forEach(function(b){h+='<div class="cblk"><h4 class="serif">'+esc(b.h)+'</h4><ul>'+b.items.map(function(it){return '<li>'+esc(it)+'</li>';}).join("")+'</ul></div>';});
     return h+'</div></div>';}
